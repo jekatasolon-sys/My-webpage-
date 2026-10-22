@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive personal webpage built with HTML and CSS.">
+  <title>Solon Solomon | Personal Webpage</title>
+  <style>
+    /* Basic reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #2457d6;
+      --primary-dark: #183c9b;
+      --text: #172033;
+      --muted: #647087;
+      --surface: #ffffff;
+      --background: #f3f6fc;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface);
+      box-shadow: 0 2px 14px rgba(20, 35, 70, 0.07);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--primary);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 38px;
+      padding: 76px 0 64px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.1;
+      margin: 12px 0 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 19px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      border: 2px solid var(--primary);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .profile-card {
+      background: linear-gradient(145deg, #dce7ff, #ffffff);
+      border: 1px solid #dbe4f5;
+      border-radius: 24px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(30, 60, 120, 0.1);
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 800;
+      border: 6px solid #fff;
+    }
+
+    .profile-card p {
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    section {
+      padding: 28px 0 58px;
+    }
+
+    .section-heading {
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 5px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid #e5eaf3;
+      border-radius: 16px;
+      padding: 23px;
+      box-shadow: 0 8px 24px rgba(20, 35, 70, 0.04);
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact-box {
+      background: #e5edff;
+      border: 1px solid #d3e0ff;
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    footer {
+      background: #172033;
+      color: #fff;
+      padding: 22px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive layout for tablets and phones */
+    @media (max-width: 760px) {
+      .nav {
+        padding: 14px 0;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 0 35px;
+        gap: 28px;
+      }
+
+      .profile-card {
+        max-width: 380px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 520px) and (max-width: 760px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="#home">Solon Solomon</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero" id="home">
+        <div>
+          <span class="eyebrow">Beginner Web Developer</span>
+          <h1>Hello, I'm Solon.</h1>
+          <p>
+            I'm learning how to build clean, useful websites with HTML and CSS.
+            This responsive personal webpage is a simple example of what I've learned.
+          </p>
+          <div class="buttons">
+            <a class="button" href="#skills">Explore my skills</a>
+            <a class="button secondary" href="#contact">Contact me</a>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Profile card">
+          <div class="avatar" aria-hidden="true">SS</div>
+          <h2>Solon Solomon</h2>
+          <p>Student • Web Development Learner</p>
+        </aside>
+      </section>
+
+      <section id="about">
+        <div class="section-heading">
+          <h2>About Me</h2>
+          <p>A little introduction.</p>
+        </div>
+        <div class="card">
+          <p>
+            I am developing my skills in web design and programming. My current
+            focus is understanding how HTML structures a page and how CSS makes
+            it attractive, organised, and adaptable to different screen sizes.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-heading">
+          <h2>What I'm Learning</h2>
+          <p>Core topics from my web development training.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true">🧱</div>
+            <h3>HTML</h3>
+            <p>Building page structure with headings, paragraphs, links, images, lists, and forms.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🎨</div>
+            <h3>CSS</h3>
+            <p>Styling text, colours, spacing, cards, and layouts to make pages easier to use.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">📱</div>
+            <h3>Responsive Design</h3>
+            <p>Using flexible layouts and media queries so the page works on phones and computers.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="contact-box">
+          <div>
+            <h2>Let's Connect</h2>
+            <p>This is a sample contact area. Add your real contact details when you're ready.</p>
+          </div>
+          <a class="button" href="mailto:hello@example.com">Email me</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Solon Solomon. Built with HTML and CSS.</p>
+    </div>
+  </footer>
+</body>
+</html>
